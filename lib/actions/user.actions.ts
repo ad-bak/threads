@@ -73,10 +73,12 @@ export async function fetchUserPosts(userId: string) {
         populate: {
           path: "author",
           model: User,
-          select: "_id id parentId image",
+          select: "name image id",
         },
       },
     });
+
+    return threads;
   } catch (error: any) {
     throw new Error(`Failed to fetch user posts: ${error.message}`);
   }
